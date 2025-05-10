@@ -1,0 +1,53 @@
+/* Estilos generales */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background-image: url("https://tse3.mm.bing.net/th/id/OIP.vScXyHHjsKcRzepSDt0AuAHaEK?cb=iwp1&rs=1&pid=ImgDetMain");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+/* Fondo estilo campo de batalla */
+.battlefield {
+  
+  
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+}
+
+/* Estilo para los contenedores de los entrenadores */
+.trainer {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajustes para el select */
+select {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+.pikachu {
+  background-image: url("https://w7.pngwing.com/pngs/359/444/png-transparent-pikachu-art-t-shirt-pikachu-mammal-vertebrate-computer-wallpaper.png") ;
+  background-size: cover;
+}
+.charmander {
+  background-image: url("https://image.pngaaa.com/858/249858-middle.png");
+  background-size: cover;
+}
+.bulbasaur {
+  background-image: url("https://toppng.com/public/uploads/preview/imagenes-de-bulbasaur-11563527030lko3af2ehy.png");
+  background-size: cover;
+}
+.squirtle {
+  background-image: url("https://th.bing.com/th/id/R.a719c088e9602f0be5426217f9f057c4?rik=CBx8vB9GfmHOeA&pid=ImgRaw&r=0");
+  background-size: cover;
+}
