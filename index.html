@@ -1,24 +1,30 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Campo de Batalla Pokémon</title>
+  <title>Selector de Pokémon</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="battlefield">
-    <div class="trainer trainer-left">
-      <select>
-        <option value="pikachu">Pikachu, ¡te elijo a ti!</option>
-        <option value="charizard">Charizard, ¡te elijo a ti!</option>
-        <option value="bulbasaur">Bulbasaur, ¡te elijo a ti!</option>
-        <option value="squirtle">Squirtle, ¡te elijo a ti!</option>
-      </select>
-    </div>
-    <div class="trainer2">
-      <!-- Aquí puedes poner otra cosa si quieres -->
-    </div>
+
+  <div class="selector-container">
+    <label for="pokemon">Elige un Pokémon:</label>
+    <select class="pokemon" id="pokemon">
+      <option value="">Selecciona...</option>
+      <option value="pikachu">Pikachu</option>
+      <option value="charmander">Charmander</option>
+      <option value="bulbasaur">Bulbasaur</option>
+      <option value="squirtle">Squirtle</option>
+    </select>
   </div>
+
+  <div class="imagenpokemon" id="imagen"></div>
+  <div class="enemigo" id="enemigo"></div>
+
+  <script src="main.js"></script>
 </body>
 </html>
+
+
+
