@@ -90,4 +90,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+document.getElementById("reiniciar").addEventListener("click", () => {
+  resultados = [];
+  trofeosContainer.innerHTML = "";
+  mensajeFinal.textContent = "";
+  resultado.textContent = "";
+
+  muestrapokemon.className = "imagenpokemon";
+  imagenEnemigo.className = "imagenpokemon";
+
+  // También puedes reiniciar el select si quieres:
+  document.getElementById("pokemon").value = "";
+});
 
