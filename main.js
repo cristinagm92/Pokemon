@@ -1,31 +1,50 @@
-// main.js
 document.addEventListener("DOMContentLoaded", () => {
   const select = document.querySelector(".pokemon");
-  const enemigo = document.getElementById("enemigo");
   const muestrapokemon = document.getElementById("imagen");
+  const imagenEnemigo = document.getElementById("imagen-enemigo");
+  const resultado = document.getElementById("resultado");
 
   select.addEventListener("change", () => {
-    const entrenador = select.value;        // valor seleccionado: "pikachu", etc.
-    const ordenador = sacarpokemon();       // obtiene el Pokémon enemigo
-    enemigo.textContent = ordenador;        // muestra el nombre del enemigo
+    const jugador = select.value;
+    const enemigo = sacarPokemonEnemigo(jugador);
 
-    // Resetea clases anteriores
+    // Mostrar imágenes
     muestrapokemon.className = "imagenpokemon";
+    imagenEnemigo.className = "imagenpokemon";
 
-    // Si hay valor, añade la clase correspondiente (debe coincidir con CSS)
-    if (entrenador) {
-      muestrapokemon.classList.add(entrenador);
-    }
+    if (jugador) muestrapokemon.classList.add(jugador);
+    if (enemigo) imagenEnemigo.classList.add(enemigo);
 
-    // Para depurar en consola:
-    console.log("Clases actuales en div imagen:", muestrapokemon.className);
+    // Mostrar resultado
+    const r = determinarGanador(jugador, enemigo);
+    resultado.textContent = r;
+
+    // Para depuración en consola
+    console.log("Jugador:", jugador, "Enemigo:", enemigo, "Resultado:", r);
   });
 });
 
-// Función de ejemplo para elegir un Pokémon enemigo al azar
-function sacarpokemon() {
-  const opciones = ["pikachu", "charmander", "bulbasaur", "squirtle"];
+function sacarPokemonEnemigo(exclude) {
+  const opciones = ["pikachu", "charmander", "bulbasaur", "squirtle"].filter(p => p !== exclude);
   return opciones[Math.floor(Math.random() * opciones.length)];
+}
+
+// Reglas tipo piedra-papel-tijera
+function determinarGanador(jugador, enemigo) {
+  if (jugador === enemigo) return "Empate";
+
+  const reglas = {
+    pikachu: ["squirtle"],
+    charmander: ["bulbasaur"],
+    bulbasaur: ["pikachu"],
+    squirtle: ["charmander"]
+  };
+
+  if (reglas[jugador]?.includes(enemigo)) {
+    return "¡Ganaste!";
+  } else {
+    return "Perdiste...";
+  }
 }
 
 
