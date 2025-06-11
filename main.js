@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultado = document.getElementById("resultado");
   const trofeosContainer = document.getElementById("trofeos-container");
   const mensajeFinal = document.getElementById("mensaje-final");
+  const botonReiniciar = document.getElementById("reiniciar");
 
   let resultados = []; // Guarda resultados de 6 rondas: "ganaste" o "perdiste"
 
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Agregar resultado a la lista de trofeos
     actualizarTrofeos(r);
 
-    // Depuración en consola
+    // Depuración
     console.log("Jugador:", jugador, "Enemigo:", enemigo, "Resultado:", r);
   });
 
@@ -38,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return opciones[Math.floor(Math.random() * opciones.length)];
   }
 
-  // Reglas tipo piedra-papel-tijera
   function determinarGanador(jugador, enemigo) {
     if (jugador === enemigo) return "Empate";
 
@@ -49,11 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       squirtle: ["charmander"]
     };
 
-    if (reglas[jugador]?.includes(enemigo)) {
-      return "¡Ganaste!";
-    } else {
-      return "Perdiste...";
-    }
+    return reglas[jugador]?.includes(enemigo) ? "¡Ganaste!" : "Perdiste...";
   }
 
   function actualizarTrofeos(resultadoRonda) {
@@ -64,18 +60,15 @@ document.addEventListener("DOMContentLoaded", () => {
       trofeosContainer.innerHTML += "🏆";
     } else if (resultadoRonda === "Perdiste...") {
       resultados.push("perdiste");
-      ;trofeosContainer.innerHTML += "👎";
-
+      trofeosContainer.innerHTML += "👎";
     }
 
-    // Al llegar a 6 resultados, mostrar mensaje final
     if (resultados.length === 6) {
       const ganadas = resultados.filter(r => r === "ganaste").length;
       const perdidas = resultados.filter(r => r === "perdiste").length;
 
       if (ganadas > perdidas) {
-        mensajeFinal.textContent = "🎉 ¡Ganaste la batalla! 🎉";
-        lanzarConfeti();
+        mensajeFinal.textContent = "🎉 ¡Ganaste la batalla! 🎊🎉✨🥳🎉✨";
       } else if (perdidas > ganadas) {
         mensajeFinal.textContent = "😢 Perdiste la batalla...";
       } else {
@@ -84,22 +77,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function lanzarConfeti() {
-    let confeti = " 🎊🎉✨🥳🎉✨";
-    mensajeFinal.textContent += confeti;
-  }
+  // ✅ Reiniciar juego
+  botonReiniciar.addEventListener("click", () => {
+    resultados = [];
+    trofeosContainer.innerHTML = "";
+    mensajeFinal.textContent = "";
+    resultado.textContent = "";
+    muestrapokemon.className = "imagenpokemon";
+    imagenEnemigo.className = "imagenpokemon";
+    select.value = "";
+  });
 });
 
-document.getElementById("reiniciar").addEventListener("click", () => {
-  resultados = [];
-  trofeosContainer.innerHTML = "";
-  mensajeFinal.textContent = "";
-  resultado.textContent = "";
 
-  muestrapokemon.className = "imagenpokemon";
-  imagenEnemigo.className = "imagenpokemon";
-
-  // También puedes reiniciar el select si quieres:
-  document.getElementById("pokemon").value = "";
-});
 
