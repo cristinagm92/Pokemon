@@ -89,5 +89,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
 
+  // ... tu código existente ...
+
+  // 🎵 Botón de música
+  const botonMusica = document.getElementById("boton-musica");
+  const musica = document.getElementById("musica");
+  let musicaActiva = false;
+
+  botonMusica.addEventListener("click", () => {
+    if (!musicaActiva) {
+      musica.play();
+      botonMusica.textContent = "🔈";
+      musicaActiva = true;
+    } else {
+      musica.pause();
+      botonMusica.textContent = "🔊";
+      musicaActiva = false;
+    }
+  });
+
+});
 
